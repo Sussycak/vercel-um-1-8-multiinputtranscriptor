@@ -16,7 +16,10 @@ const app = new Vue({
       pending: [],
     },
     lastWordTime: Date.now(),
-    lockedSpeakers: {}, // speaker locking
+    lockedSpeakers: {},
+	customLabels: {},
+	selectedSpeaker: "",
+	newLabel: "",// speaker locking
     currentSpeaker: null,        // for segment buffering
     currentSegmentWords: [],     // words in current speaker's segment
     speakerColors: {
@@ -197,7 +200,16 @@ const app = new Vue({
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    }
+    },
+	displayLabel(speaker) {
+		return this.customLabels[speaker] || speaker;
+	},
+	applyRename() {
+		if (this.selectedSpeaker && this.newLabel.trim()) {
+			this.$set(this.customLabels, this.selectedSpeaker, this.newlabel.trim());
+			this.newLabel = "";
+		}
+	}
   },
   computed: {
     singleTranscript() {
@@ -205,14 +217,15 @@ const app = new Vue({
       let lastSp = null;
       let sentence = "";
       this.groupTranscript.forEach((w, i) => {
+		const label = this.displayLabel(w.speaker);
         if (lastSp && w.speaker !== lastSp) {
-          transcript += `\n\n${lastSp}: ${sentence.trim()}\n\n`;
+          transcript += `\n\n${label}: ${sentence.trim()}\n\n`;
           sentence = "";
         }
-        sentence += `${w.word} `;
+        sentence += w.word + "";
         lastSp = w.speaker;
         if (i === this.groupTranscript.length - 1) {
-          transcript += `${lastSp}: ${sentence.trim()}`;
+          transcript += `${label}: ${sentence.trim()}`;
         }
       });
       return transcript.trim();
@@ -226,9 +239,7 @@ const app = new Vue({
 	  singleTranscript() {
 		  this.$nextTick(() => {
 			  const container = this.$el.querySelector('#transcribe p');
-			  if (container) {
-				  container.scrollTop = container.scrollHeight;
-			  }
+			  if (container) container.scrollTop = container.scrollHeight;
 		  });
 	  }
   }
