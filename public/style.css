@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: #FFFFFF;
+  color: black;
+  font-family: 'Cairo', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Memastikan halaman bisa di-scroll */
+}
+
+#app {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: 1em;
+  padding-right: calc(100px + 2em);
+  overflow-y: auto; /* Membuat konten utama bisa di-scroll */
+}
+
+aside {
+  background: #4682B4;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+}
+
+aside li {
+  list-style: none;
+  padding: 1em;
+  text-align: center;
+}
+
+aside li img {
+  width: 3em;
+  margin: 0 auto;
+  display: block;
+}
+
+aside li.active {
+  background: #40E0D0;
+}
+
+aside li small {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+aside > a {
+  margin-top: auto;
+  padding: 0.5em 1em;
+}
+
+/* Transkripsi */
+#transcribe {
+  flex: 1;
+  overflow-y: auto; /* Memastikan area transkrip bisa di-scroll */
+  padding-bottom: 5em; /* Memberikan ruang untuk footer */
+}
+
+#transcribe .selection {
+  margin-left: 1em;
+  margin-right: 0.5em;
+  padding-bottom: 2em;
+}
+
+#transcribe h2 {
+  font-size: 2.5em;
+  margin-top: 0.5em;
+}
+
+#transcribe button {
+  font-size: 1.5em;
+  padding: 0.7em;
+  display: block;
+  width: 100%;
+  margin-top: 5em;
+  background: #38EDAC;
+  color: #141E29;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#transcribe button:hover {
+  background: #2cb98b;
+}
+
+#transcribe p {
+  padding: 1rem;
+  font-size: 2em;
+  line-height: 1.5em;
+  word-wrap: break-word;
+}
+
+/* Gaya umum untuk transkrip */
+.transcript {
+  text-align: justify; /* Rata kanan-kiri */
+  white-space: pre-line;
+  font-size: 1.2em;
+  line-height: 1.5;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+
+
+/* Gaya khusus untuk tiap speaker */
+.speaker0 {
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+  background-color: #f0f0f0;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+.speaker1 {
+  color: darkblue;
+  font-weight: bold;
+  background-color: #e0f7fa;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+.speaker2 {
+  color: darkgreen;
+  font-weight: bold;
+  background-color: #e8f5e9;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+.speaker3 {
+  color: darkred;
+  font-weight: bold;
+  background-color: #ffebee;
+  padding: 0.5em;
+  border-radius: 5px;
+  
+}
+
+/* Badge styling */
+#badge {
+  padding: 1em 2em;
+}
+
+#badge h1 {
+  font-size: 3.5em;
+}
+
+#badge h2 {
+  font-size: 2em;
+}
+
+#badge h2 + h2 {
+  margin-top: 1rem;
+}
+
+/* FOOTER agar tidak tenggelam */
+footer {
+  position: sticky;
+  bottom: 0;
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  width: 100%;
+}
+
+footer img {
+  max-height: 50px;
+}
+
+footer a {
+  display: inline-block;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
