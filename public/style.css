@@ -1,13 +1,11 @@
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
+/* Body and App Layout */
 body {
   background: #FFFFFF;
   color: black;
@@ -16,7 +14,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Memastikan halaman bisa di-scroll */
+  overflow-y: auto;
 }
 
 #app {
@@ -25,112 +23,14 @@ body {
   flex-direction: column;
 }
 
-main {
-  flex: 1;
-  padding: 1em;
-  padding-right: calc(100px + 2em);
-  overflow-y: auto; /* Membuat konten utama bisa di-scroll */
-}
-
-aside {
-  background: #4682B4;
-  width: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-}
-
-aside li {
-  list-style: none;
-  padding: 1em;
-  text-align: center;
-}
-
-aside li img {
-  width: 3em;
-  margin: 0 auto;
-  display: block;
-}
-
-aside li.active {
-  background: #40E0D0;
-}
-
-aside li small {
-  width: 100%;
-  display: block;
-  text-align: center;
-}
-
-aside > a {
-  margin-top: auto;
-  padding: 0.5em 1em;
-}
-
-/* Transkripsi */
+/* Transcription Area */
 #transcribe {
   flex: 1;
-  overflow-y: auto; /* Memastikan area transkrip bisa di-scroll */
-  padding-bottom: 5em; /* Memberikan ruang untuk footer */
+  overflow-y: auto;
+  padding-bottom: 5em;
 }
 
-#transcribe .selection {
-  margin-left: 1em;
-  margin-right: 0.5em;
-  padding-bottom: 2em;
-}
-
-#transcribe h2 {
-  font-size: 2.5em;
-  margin-top: 0.5em;
-}
-
-#transcribe button {
-  font-size: 1.5em;
-  padding: 0.7em;
-  display: block;
-  width: 100%;
-  margin-top: 5em;
-  background: #38EDAC;
-  color: #141E29;
-  border: none;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#transcribe button:hover {
-  background: #2cb98b;
-}
-
-#transcribe p {
-  padding: 1rem;
-  font-size: 2em;
-  line-height: 1.5em;
-  word-wrap: break-word;
-}
-
-/* Gaya umum untuk transkrip */
-.transcript {
-  text-align: justify; /* Rata kanan-kiri */
-  white-space: pre-line;
-  font-size: 1.2em;
-  line-height: 1.5;
-  max-width: 100%;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  padding: 0.5em;
-  margin-bottom: 1em;
-  border-radius: 5px;
-}
-
-
-
-/* Gaya khusus untuk tiap speaker */
+/* Speaker Styling */
 .speaker0 {
   color: black;
   font-weight: bold;
@@ -162,27 +62,82 @@ aside > a {
   background-color: #ffebee;
   padding: 0.5em;
   border-radius: 5px;
-  
 }
 
-/* Badge styling */
-#badge {
-  padding: 1em 2em;
-}
-
-#badge h1 {
-  font-size: 3.5em;
-}
-
-#badge h2 {
-  font-size: 2em;
-}
-
-#badge h2 + h2 {
+/* Rename Input and Button */
+#rename-speaker {
   margin-top: 1rem;
+  padding: 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* FOOTER agar tidak tenggelam */
+#rename-speaker input {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 60%;
+}
+
+#rename-speaker button {
+  background-color: #1ABC9C;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#rename-speaker button:hover {
+  background-color: #16A085;
+}
+
+/* Text Area for Transcription */
+#transcribe p {
+  padding: 1rem;
+  font-size: 2em;
+  line-height: 1.5em;
+  word-wrap: break-word;
+}
+
+/* Scrollable Area for Transcript */
+#transcribe {
+  padding-right: calc(100px + 2em);
+  overflow-y: auto;
+}
+
+#transcribe p {
+  padding: 1rem;
+  font-size: 1.5rem;
+  word-wrap: break-word;
+  max-width: 100%;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Active Transcription Button */
+#transcribe button {
+  background-color: #38EDAC;
+  font-size: 1.5rem;
+  padding: 1rem;
+  width: 100%;
+  margin-top: 5em;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#transcribe button:hover {
+  background-color: #2cb98b;
+}
+
+/* Footer Styling */
 footer {
   position: sticky;
   bottom: 0;
